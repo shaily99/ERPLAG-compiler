@@ -1,2 +1,4 @@
 # ERPLAG-compiler
-A compiler for custom specifications of ERPLAG built for the course Compiler Construction at BITS Pilani
+Source code for compiler of ERPLAG with given [language specifications](Language specifications.pdf).
+
+**Team Members:** Shaily Bhatt, Shaily Bhatt, Shefali tripathi.
