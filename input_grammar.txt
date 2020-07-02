@@ -1,0 +1,107 @@
+NT_program NT_moduleDeclarations NT_otherModules NT_driverModule NT_otherModules
+NT_moduleDeclarations NT_moduleDeclaration NT_moduleDeclarations
+NT_moduleDeclarations epsilon
+NT_moduleDeclaration T_DECLARE T_MODULE T_ID T_SEMICOL
+NT_otherModules NT_module NT_otherModules
+NT_otherModules epsilon
+NT_driverModule T_DRIVERDEF T_DRIVER T_PROGRAM T_DRIVERENDDEF NT_moduleDef
+NT_module T_DEF T_MODULE T_ID T_ENDDEF T_TAKES T_INPUT T_SQBO NT_input_plist T_SQBC T_SEMICOL NT_ret NT_moduleDef
+NT_ret T_RETURNS T_SQBO NT_output_plist T_SQBC T_SEMICOL
+NT_ret epsilon
+NT_input_plist T_ID T_COLON NT_dataType NT_input_plist_1
+NT_input_plist_1 T_COMMA T_ID T_COLON NT_dataType NT_input_plist_1
+NT_input_plist_1 epsilon
+NT_output_plist T_ID T_COLON NT_type NT_output_plist_1
+NT_output_plist_1 T_COMMA T_ID T_COLON NT_type NT_output_plist_1
+NT_output_plist_1 epsilon
+NT_dataType T_INTEGER
+NT_dataType T_REAL
+NT_dataType T_BOOLEAN
+NT_dataType T_ARRAY T_SQBO NT_range_arrays T_SQBC T_OF NT_type
+NT_range_arrays NT_index T_RANGEOP NT_index
+NT_type T_INTEGER
+NT_type T_REAL
+NT_type T_BOOLEAN
+NT_moduleDef T_START NT_statements T_END
+NT_statements NT_statement NT_statements
+NT_statements epsilon
+NT_statement NT_ioStmt
+NT_statement NT_simpleStmt
+NT_statement NT_declareStmt
+NT_statement NT_conditionalStmt
+NT_statement NT_iterativeStmt
+NT_ioStmt T_GET_VALUE T_BO T_ID T_BC T_SEMICOL
+NT_ioStmt T_PRINT T_BO NT_var T_BC T_SEMICOL
+NT_var T_ID NT_whichID
+NT_var T_NUM
+NT_var T_RNUM
+NT_var T_TRUE
+NT_var T_FALSE
+NT_whichID T_SQBO NT_index T_SQBC
+NT_whichID epsilon
+NT_simpleStmt NT_moduleReuseStmt
+NT_simpleStmt NT_assignmentStmt
+NT_assignmentStmt T_ID NT_whichStmt
+NT_whichStmt NT_lvalueIDStmt 
+NT_whichStmt NT_lvalueARRStmt
+NT_lvalueIDStmt T_ASSIGNOP NT_expression T_SEMICOL
+NT_lvalueARRStmt T_SQBO NT_index T_SQBC T_ASSIGNOP NT_expression T_SEMICOL
+NT_index T_NUM
+NT_index T_ID
+NT_moduleReuseStmt NT_optional T_USE T_MODULE T_ID T_WITH T_PARAMETERS NT_idList T_SEMICOL
+NT_optional T_SQBO NT_idList T_SQBC T_ASSIGNOP
+NT_optional epsilon
+NT_idList T_ID NT_idList_1
+NT_idList_1 T_COMMA T_ID NT_idList_1
+NT_idList_1 epsilon
+NT_expression NT_arithmeticOrBooleanExpr
+NT_expression NT_U
+NT_U NT_sign NT_new_NT
+NT_sign T_PLUS
+NT_sign T_MINUS
+NT_new_NT T_BO NT_arithmeticExpr T_BC 
+NT_new_NT NT_var_id_num
+NT_var_id_num T_ID NT_whichID
+NT_var_id_num T_NUM
+NT_var_id_num T_RNUM
+NT_arithmeticOrBooleanExpr NT_booleanTerm NT_booleanExpr_1
+NT_booleanExpr_1 NT_logicalOp NT_booleanTerm NT_booleanExpr_1
+NT_booleanExpr_1 epsilon
+NT_booleanTerm NT_arithmeticExpr NT_booleanTerm_1
+NT_booleanTerm T_TRUE 
+NT_booleanTerm T_FALSE
+NT_booleanTerm_1 NT_relationalOp NT_arithmeticExpr
+NT_booleanTerm_1 epsilon
+NT_arithmeticExpr NT_term NT_arithmeticExpr_1
+NT_arithmeticExpr_1 NT_op_1 NT_term NT_arithmeticExpr_1
+NT_arithmeticExpr_1 epsilon
+NT_term NT_factor NT_term_1
+NT_term_1 NT_op_2 NT_factor NT_term_1
+NT_term_1 epsilon
+NT_factor T_BO NT_arithmeticOrBooleanExpr T_BC
+NT_factor NT_var
+NT_op_1 T_PLUS
+NT_op_1 T_MINUS
+NT_op_2 T_MUL
+NT_op_2 T_DIV
+NT_logicalOp T_AND
+NT_logicalOp T_OR
+NT_relationalOp T_LT
+NT_relationalOp T_LE
+NT_relationalOp T_GT
+NT_relationalOp T_GE
+NT_relationalOp T_EQ
+NT_relationalOp T_NE
+NT_declareStmt T_DECLARE NT_idList T_COLON NT_dataType T_SEMICOL
+NT_conditionalStmt T_SWITCH T_BO T_ID T_BC T_START NT_caseStmt NT_defaultStmt T_END
+NT_caseStmt T_CASE NT_value T_COLON NT_statements T_BREAK T_SEMICOL NT_caseStmts
+NT_caseStmts T_CASE NT_value T_COLON NT_statements T_BREAK T_SEMICOL NT_caseStmts
+NT_caseStmts epsilon
+NT_value T_NUM
+NT_value T_TRUE
+NT_value T_FALSE
+NT_defaultStmt T_DEFAULT T_COLON NT_statements T_BREAK T_SEMICOL
+NT_defaultStmt epsilon
+NT_iterativeStmt T_FOR T_BO T_ID T_IN NT_range T_BC T_START NT_statements T_END
+NT_iterativeStmt T_WHILE T_BO NT_arithmeticOrBooleanExpr T_BC T_START NT_statements T_END
+NT_range T_NUM T_RANGEOP T_NUM
