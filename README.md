@@ -16,7 +16,5 @@ Source code for compiler of ERPLAG with custom [language specifications](Languag
 **Compitability:** GCC version 5.4.0 on Ubuntu 16.04. 
 
 1. Clone the repository.
-2. Run the MakeFile in the terminal using the command:
-  > make
-3. Test using the command:
-  > ./compiler sourcefilename
+2. Run the MakeFile in the terminal using the command: make
+3. Test using the command: ./compiler sourcefilename
